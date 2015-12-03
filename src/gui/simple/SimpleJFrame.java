@@ -9,8 +9,12 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.border.EtchedBorder;
 
 public class SimpleJFrame extends JFrame implements MouseListener, MouseMotionListener{
+
+	private static final long serialVersionUID = -4326089716290673478L;
+	
 	protected int WIDTH;
 	protected int HEIGHT;
 	protected int x;
@@ -30,7 +34,7 @@ public class SimpleJFrame extends JFrame implements MouseListener, MouseMotionLi
 		// 창 기본 설정
 		this.setUndecorated(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.getRootPane().setBorder(BorderFactory.createEtchedBorder()); // frame에 테두리 적용
+		this.getRootPane().setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED, new Color(50, 50, 50), new Color(255, 255, 255))); // frame에 테두리 적용
 		this.getContentPane().setBackground(Color.WHITE);
 		this.setSize(WIDTH, HEIGHT);
 		this.setLocation(x = screen.width / 2 - WIDTH/2, y = screen.height / 2 - HEIGHT/2);
