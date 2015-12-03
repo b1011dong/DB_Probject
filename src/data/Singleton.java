@@ -1,5 +1,10 @@
 package data;
 
+/**
+ * Singleton data control class for Assignment Submitting System(ASS)
+ * @author Dongwon
+ *
+ */
 public class Singleton {
 	
 	private static Singleton data;

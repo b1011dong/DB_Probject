@@ -2,18 +2,23 @@ package gui.simple;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.border.EtchedBorder;
 
 public class SimpleJFrame extends JFrame implements MouseListener, MouseMotionListener{
 
 	private static final long serialVersionUID = -4326089716290673478L;
+	
+	protected JButton exitButton;
+	protected JButton minimizeButton;
 	
 	protected int WIDTH;
 	protected int HEIGHT;
@@ -40,6 +45,24 @@ public class SimpleJFrame extends JFrame implements MouseListener, MouseMotionLi
 		this.setLocation(x = screen.width / 2 - WIDTH/2, y = screen.height / 2 - HEIGHT/2);
 		this.setResizable(false);
 		this.setVisible(true);
+		
+		exitButton = new JButton("x");
+		exitButton.setBackground(Color.WHITE);
+		exitButton.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
+		exitButton.setBorder(null);
+		exitButton.setOpaque(true);
+		//exitButton.addActionListener(this);
+		exitButton.setFocusPainted(false);
+		this.add(exitButton).setBounds(WIDTH - 40, 0, 30, 30);
+		
+		minimizeButton = new JButton("-");
+		minimizeButton.setBackground(Color.WHITE);
+		minimizeButton.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 26));
+		minimizeButton.setBorder(null);
+		minimizeButton.setOpaque(true);
+		//minimizeButton.addActionListener(this);
+		minimizeButton.setFocusPainted(false);
+		this.add(minimizeButton).setBounds(WIDTH - 80, 0, 30, 30);
 	}
 
 	public void mouseClicked(MouseEvent arg0) {
