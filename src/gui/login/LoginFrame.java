@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 
-import gui.data.GUIData;
+import gui.data.GUIControler;
 import gui.simple.*;
 
 /**
@@ -40,79 +40,23 @@ public class LoginFrame extends SimpleJFrame implements ActionListener, KeyListe
 	}
 	
 	public void addComponents() {
-		mainLabel = new JLabel();
-		mainLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 24));
-		mainLabel.setForeground(new Color(60, 60, 60));
-		mainLabel.setText("∞˙¡¶ ¡¶√‚ Ω√Ω∫≈€");
-		mainLabel.setVisible(true);
-		this.add(mainLabel).setBounds(110, 30, 200, 50);
 		
-		idLabel = new JLabel();
-		idLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.PLAIN, 14));
-		idLabel.setForeground(new Color(60, 60, 60));
-		idLabel.setText("ID");
-		idLabel.setVisible(true);
-		this.add(idLabel).setBounds(40, 90, 100, 50);
+		mainLabel = GUIControler.addBigLabel(this, mainLabel, "∞˙¡¶ ¡¶√‚ Ω√Ω∫≈€", 110, 30);
 		
-		passwordLabel = new JLabel();
-		passwordLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.PLAIN, 14));
-		passwordLabel.setForeground(new Color(60, 60, 60));
-		passwordLabel.setText("PASSWORD");
-		passwordLabel.setVisible(true);
-		this.add(passwordLabel).setBounds(40, 150, 100, 50);
+		idLabel = GUIControler.addSmallLabel(this, idLabel, "ID", 40, 90);
+		passwordLabel = GUIControler.addSmallLabel(this, passwordLabel, "PASSWORD", 40, 150);
 		
-		idField = new JTextField();
-		idField.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.PLAIN, 16));
-		idField.setHorizontalAlignment(JPasswordField.LEFT);
-		idField.setBorder(GUIData.buttonBorder2);
-		idField.addKeyListener(this);
-		this.add(idField).setBounds(40, 130, 310, 30);
+		idField = GUIControler.addTextField(this, idField, 40, 130, 310, 30);
+		passwordField = GUIControler.addPasswordField(this, passwordField, 40, 190, 310, 30);
 		
-		passwordField = new JPasswordField();
-		passwordField.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.PLAIN, 16));
-		passwordField.setHorizontalAlignment(JPasswordField.LEFT);
-		passwordField.setBorder(GUIData.buttonBorder2);
-		passwordField.addKeyListener(this);
-		this.add(passwordField).setBounds(40, 190, 310, 30);
-		
-		okButton = new JButton(" »Æ ¿Œ ");
-		okButton.setBackground(Color.WHITE);
-		okButton.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 14));
-		okButton.setBorder(null);
-		okButton.setOpaque(true);
-		okButton.setFocusPainted(false);
-		okButton.setForeground(Color.WHITE);
-		okButton.setBackground(GUIData.buttonColor);
-		okButton.addKeyListener(this);
-		okButton.addActionListener(this);
-		this.add(okButton).setBounds(40, 230, 80, 30);
-		
-		cancelButton = new JButton(" √Î º“ ");
-		cancelButton.setBackground(Color.WHITE);
-		cancelButton.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 14));
-		cancelButton.setBorder(null);
-		cancelButton.setOpaque(true);
-		cancelButton.addActionListener(this);
-		cancelButton.setFocusPainted(false);
-		cancelButton.setForeground(Color.WHITE);
-		cancelButton.setBackground(GUIData.buttonColor);
-		this.add(cancelButton).setBounds(155, 230, 80, 30);
-		
-		signupButton = new JButton(" ∞° ¿‘ ");
-		signupButton.setBackground(Color.WHITE);
-		signupButton.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 14));
-		signupButton.setBorder(null);
-		signupButton.setOpaque(true);
-		signupButton.addActionListener(this);
-		signupButton.setFocusPainted(false);
-		signupButton.setForeground(Color.WHITE);
-		signupButton.setBackground(GUIData.buttonColor);
-		this.add(signupButton).setBounds(270, 230, 80, 30);
+		okButton = GUIControler.addButton(this, okButton, " »Æ ¿Œ ", 40, 240);
+		cancelButton = GUIControler.addButton(this, cancelButton, " √Î º“ ", 155, 240);
+		signupButton = GUIControler.addButton(this, signupButton, " ∞° ¿‘ ", 270, 240);
 		
 		this.minimizeButton.addActionListener(this);
 		this.exitButton.addActionListener(this);
 	}
-	
+
 	public void openSystemFrame() {
 		// TODO opening frame branch control by identification authority type
 		/*
@@ -123,6 +67,11 @@ public class LoginFrame extends SimpleJFrame implements ActionListener, KeyListe
 		 * 
 		 * note: 1 and 2 probably the same
 		 */
+		JOptionPane.showMessageDialog(this, "Login!");
+		
+		/*if(Login Sucess)*/ {
+			
+		}
 	}
 	
 	public void openSignupFrame() {
@@ -134,13 +83,17 @@ public class LoginFrame extends SimpleJFrame implements ActionListener, KeyListe
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == okButton) {
+			openSystemFrame();
 			
+			this.dispose();
 		}
 		else if(e.getSource() == cancelButton) {
 			this.dispose();
 		}
 		else if(e.getSource() == signupButton) {
 			openSignupFrame();
+			
+			this.dispose();
 		}
 		else if(e.getSource() == minimizeButton) {
 			this.setState(Frame.ICONIFIED);
@@ -158,7 +111,7 @@ public class LoginFrame extends SimpleJFrame implements ActionListener, KeyListe
 				passwordField.grabFocus();
 			}
 			else if(e.getSource() == passwordField) {
-				
+				openSystemFrame();
 			}
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_UP) {

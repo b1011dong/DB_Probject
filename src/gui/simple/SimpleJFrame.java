@@ -51,7 +51,6 @@ public class SimpleJFrame extends JFrame implements MouseListener, MouseMotionLi
 		exitButton.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		exitButton.setBorder(null);
 		exitButton.setOpaque(true);
-		//exitButton.addActionListener(this);
 		exitButton.setFocusPainted(false);
 		this.add(exitButton).setBounds(WIDTH - 40, 0, 30, 30);
 		
@@ -60,7 +59,6 @@ public class SimpleJFrame extends JFrame implements MouseListener, MouseMotionLi
 		minimizeButton.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 26));
 		minimizeButton.setBorder(null);
 		minimizeButton.setOpaque(true);
-		//minimizeButton.addActionListener(this);
 		minimizeButton.setFocusPainted(false);
 		this.add(minimizeButton).setBounds(WIDTH - 80, 0, 30, 30);
 	}

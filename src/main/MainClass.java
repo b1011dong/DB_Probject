@@ -1,4 +1,4 @@
-package gui.main;
+package main;
 
 import gui.login.LoginFrame;
 
