@@ -74,15 +74,15 @@ public class SignupFrame extends SimpleJFrame implements ActionListener, KeyList
 		
 		mainLabel = GUIControler.addBigLabel(this, mainLabel, "회원 가입", 150, 30);
 		
-		idLabel = GUIControler.addSmallLabel(this, idLabel, "ID", 40, 90);
-		passwordLabel = GUIControler.addSmallLabel(this, passwordLabel, "PASSWORD", 40, 150);
-		passwordCheckLabel = GUIControler.addSmallLabel(this, passwordCheckLabel, "PASSWORD CHECK", 40, 210);
-		authortyLabel = GUIControler.addSmallLabel(this, authortyLabel, "AUTHORITY", 40, 270);
-		majorLabel = GUIControler.addSmallLabel(this, majorLabel, "MAJOR", 40, 330);
-		numberLabel = GUIControler.addSmallLabel(this, numberLabel, "STUDENT ID", 40, 390);
-		nameLabel = GUIControler.addSmallLabel(this, nameLabel, "NAME", 40, 450);
-		phoneLabel = GUIControler.addSmallLabel(this, phoneLabel, "PHONE", 40, 510);
-		emailLabel_pre = GUIControler.addSmallLabel(this, emailLabel_pre, "EMAIL", 40, 570);
+		idLabel = GUIControler.addSmallLabel(this, idLabel, "아이디", 40, 90);
+		passwordLabel = GUIControler.addSmallLabel(this, passwordLabel, "비밀번호", 40, 150);
+		passwordCheckLabel = GUIControler.addSmallLabel(this, passwordCheckLabel, "비밀번호 확인", 40, 210);
+		authortyLabel = GUIControler.addSmallLabel(this, authortyLabel, "권한", 40, 270);
+		majorLabel = GUIControler.addSmallLabel(this, majorLabel, "전공/소속", 40, 330);
+		numberLabel = GUIControler.addSmallLabel(this, numberLabel, "학생 번호", 40, 390);
+		nameLabel = GUIControler.addSmallLabel(this, nameLabel, "이름", 40, 450);
+		phoneLabel = GUIControler.addSmallLabel(this, phoneLabel, "전화번호", 40, 510);
+		emailLabel_pre = GUIControler.addSmallLabel(this, emailLabel_pre, "이메일", 40, 570);
 		emailLabel_at = GUIControler.addSmallLabel(this, emailLabel_at, "@", 190, 600);
 		
 		idField = GUIControler.addTextField(this, idField, 40, 130, 310, 30);
@@ -100,12 +100,12 @@ public class SignupFrame extends SimpleJFrame implements ActionListener, KeyList
 		
 		authorityButtonGroup = new ButtonGroup();
 		
-		professorRadioButton = GUIControler.addJRadioButton(this, authorityButtonGroup, professorRadioButton, "PROFESSOR", 40, 310);
-		assistantRadioButton = GUIControler.addJRadioButton(this, authorityButtonGroup, assistantRadioButton, "ASSISTANT", 150, 310);
-		studentRadioButton = GUIControler.addJRadioButton(this, authorityButtonGroup, studentRadioButton, "STUDENT", 260, 310);
+		professorRadioButton = GUIControler.addJRadioButton(this, authorityButtonGroup, professorRadioButton, "교수", 40, 310);
+		assistantRadioButton = GUIControler.addJRadioButton(this, authorityButtonGroup, assistantRadioButton, "조교", 150, 310);
+		studentRadioButton = GUIControler.addJRadioButton(this, authorityButtonGroup, studentRadioButton, "학생", 260, 310);
 		
 		phoneField.addFocusListener(this);
-		phoneField.setText("ex) 01012345678");
+		phoneField.setText("예) 01012345678");
 		phoneField.setForeground(new Color(150, 150, 150));
 		
 		this.minimizeButton.addActionListener(this);
@@ -142,23 +142,138 @@ public class SignupFrame extends SimpleJFrame implements ActionListener, KeyList
 			
 			this.dispose();
 		}
-		else if(e.getSource() == professorRadioButton) {
-			numberLabel.setText("PROFESSOR ID");
-		}
-		else if(e.getSource() == assistantRadioButton) {
-			numberLabel.setText("ASSISTANT ID");
-		}
-		else if(e.getSource() == studentRadioButton) {
-			numberLabel.setText("STUDENT ID");
-		}
 		
 	}
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-			
+			if(e.getSource() == idField) {
+				passwordField.grabFocus();
+			}
+			else if(e.getSource() == passwordField) {
+				passwordCheckField.grabFocus();
+			}
+			else if(e.getSource() == passwordCheckField) {
+				if(authorityButtonGroup.getSelection() == professorRadioButton.getModel()) {
+					professorRadioButton.grabFocus();
+				}
+				else if(authorityButtonGroup.getSelection() == assistantRadioButton.getModel()) {
+					assistantRadioButton.grabFocus();
+				}
+				else if(authorityButtonGroup.getSelection() == studentRadioButton.getModel()) {
+					studentRadioButton.grabFocus();
+				}
+				else {
+					professorRadioButton.grabFocus();
+				}
+			}
+			else if(e.getSource() == professorRadioButton) {
+				majorField.grabFocus();
+			}
+			else if(e.getSource() == assistantRadioButton) {
+				majorField.grabFocus();	
+			}
+			else if(e.getSource() == studentRadioButton) {
+				majorField.grabFocus();
+			}
+			else if(e.getSource() == majorField) {
+				numberField.grabFocus();
+			}
+			else if(e.getSource() == numberField) {
+				nameField.grabFocus();
+			}
+			else if(e.getSource() == nameField) {
+				phoneField.grabFocus();
+			}
+			else if(e.getSource() == phoneField) {
+				emailField_pre.grabFocus();
+			}
+			else if(e.getSource() == emailField_pre) {
+				emailField_post.grabFocus();
+			}
+			else if(e.getSource() == emailField_post) {
+				@SuppressWarnings("unused")
+				LoginFrame loginFrame = new LoginFrame();
+				
+				signup();
+				
+				this.dispose();
+			}
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_UP) {
+			if(e.getSource() == passwordField) {
+				idField.grabFocus();
+			}
+			else if(e.getSource() == passwordCheckField) {
+				passwordField.grabFocus();
+			}
+			else if(e.getSource() == majorField) {
+				if(authorityButtonGroup.getSelection() == professorRadioButton.getModel()) {
+					professorRadioButton.grabFocus();
+				}
+				else if(authorityButtonGroup.getSelection() == assistantRadioButton.getModel()) {
+					assistantRadioButton.grabFocus();
+				}
+				else if(authorityButtonGroup.getSelection() == studentRadioButton.getModel()) {
+					studentRadioButton.grabFocus();
+				}
+				else {
+					professorRadioButton.grabFocus();
+				}
+			}
+			else if(e.getSource() == numberField) {
+				majorField.grabFocus();
+			}
+			else if(e.getSource() == nameField) {
+				numberField.grabFocus();
+			}
+			else if(e.getSource() == phoneField) {
+				nameField.grabFocus();
+			}
+			else if(e.getSource() == emailField_pre) {
+				phoneField.grabFocus();
+			}
+			else if(e.getSource() == emailField_post) {
+				emailField_pre.grabFocus();
+			}
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+			if(e.getSource() == idField) {
+				passwordField.grabFocus();
+			}
+			else if(e.getSource() == passwordField) {
+				passwordCheckField.grabFocus();
+			}
+			else if(e.getSource() == passwordCheckField) {
+				if(authorityButtonGroup.getSelection() == professorRadioButton.getModel()) {
+					professorRadioButton.grabFocus();
+				}
+				else if(authorityButtonGroup.getSelection() == assistantRadioButton.getModel()) {
+					assistantRadioButton.grabFocus();
+				}
+				else if(authorityButtonGroup.getSelection() == studentRadioButton.getModel()) {
+					studentRadioButton.grabFocus();
+				}
+				else {
+					professorRadioButton.grabFocus();
+				}
+			}
+			else if(e.getSource() == majorField) {
+				numberField.grabFocus();
+			}
+			else if(e.getSource() == numberField) {
+				nameField.grabFocus();
+			}
+			else if(e.getSource() == nameField) {
+				phoneField.grabFocus();
+			}
+			else if(e.getSource() == phoneField) {
+				emailField_pre.grabFocus();
+			}
+			else if(e.getSource() == emailField_pre) {
+				emailField_post.grabFocus();
+			}
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			@SuppressWarnings("unused")
@@ -181,18 +296,28 @@ public class SignupFrame extends SimpleJFrame implements ActionListener, KeyList
 	@Override
 	public void focusGained(FocusEvent e) {
 		if(e.getSource() == phoneField) {
-			if(phoneField.getText().equals("ex) 01012345678")) {
+			if(phoneField.getText().equals("예) 01012345678")) {
 				phoneField.setText("");
 				phoneField.setForeground(new Color(0, 0, 0));
 			}
+		}
+		
+		if(e.getSource() == professorRadioButton) {
+			numberLabel.setText("교수 번호");
+		}
+		else if(e.getSource() == assistantRadioButton) {
+			numberLabel.setText("조교 번호");
+		}
+		else if(e.getSource() == studentRadioButton) {
+			numberLabel.setText("학생 번호");
 		}
 	}
 
 	@Override
 	public void focusLost(FocusEvent e) {
 		if(e.getSource() == phoneField) {
-			if(phoneField.getText().equals("ex) 01012345678") || phoneField.getText().equals("")) {
-				phoneField.setText("ex) 01012345678");
+			if(phoneField.getText().equals("예) 01012345678") || phoneField.getText().equals("")) {
+				phoneField.setText("예) 01012345678");
 				phoneField.setForeground(GUIData.grayColor);
 			}
 		}

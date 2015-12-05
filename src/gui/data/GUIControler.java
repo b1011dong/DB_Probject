@@ -3,6 +3,7 @@ package gui.data;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyListener;
 
 import javax.swing.ButtonGroup;
@@ -35,13 +36,13 @@ public class GUIControler {
 		return label;
 	}
 	
-	static public JLabel addBigLabel(JFrame frame, JLabel label, String message, int x, int y, int width, int height) {
+	static public JLabel addMediumLabel(JFrame frame, JLabel label, String message, int x, int y) {
 		label = new JLabel();
-		label.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 24));
+		label.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 18));
 		label.setForeground(new Color(60, 60, 60));
 		label.setText(message);
 		label.setVisible(true);
-		frame.add(label).setBounds(x, y, width, height);
+		frame.add(label).setBounds(x, y, 200, 50);
 		
 		return label;
 	}
@@ -53,17 +54,6 @@ public class GUIControler {
 		label.setText(message);
 		label.setVisible(true);
 		frame.add(label).setBounds(x, y, 200, 50);
-		
-		return label;
-	}
-	
-	static public JLabel addSmallLabel(JFrame frame, JLabel label, String message, int x, int y, int width, int height) {
-		label = new JLabel();
-		label.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
-		label.setForeground(new Color(60, 60, 60));
-		label.setText(message);
-		label.setVisible(true);
-		frame.add(label).setBounds(x, y, width, height);
 		
 		return label;
 	}
@@ -149,6 +139,8 @@ public class GUIControler {
 		buttonGroup.add(radioButton);
 		radioButton.setBounds(x, y, 110, 30);
 		radioButton.addActionListener((ActionListener) frame);
+		radioButton.addFocusListener((FocusListener) frame);
+		radioButton.addKeyListener((KeyListener) frame);
 		frame.add(radioButton);
 		
 		return radioButton;
@@ -161,6 +153,8 @@ public class GUIControler {
 		buttonGroup.add(radioButton);
 		radioButton.setBounds(x, y, width, height);
 		radioButton.addActionListener((ActionListener) frame);
+		radioButton.addFocusListener((FocusListener) frame);
+		radioButton.addKeyListener((KeyListener) frame);
 		frame.add(radioButton);
 		
 		return radioButton;

@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 import gui.data.GUIControler;
+import gui.main.MainFrame;
 import gui.simple.*;
 
 /**
@@ -43,8 +44,8 @@ public class LoginFrame extends SimpleJFrame implements ActionListener, KeyListe
 		
 		mainLabel = GUIControler.addBigLabel(this, mainLabel, "과제 제출 시스템", 110, 30);
 		
-		idLabel = GUIControler.addSmallLabel(this, idLabel, "ID", 40, 90);
-		passwordLabel = GUIControler.addSmallLabel(this, passwordLabel, "PASSWORD", 40, 150);
+		idLabel = GUIControler.addSmallLabel(this, idLabel, "아이디", 40, 90);
+		passwordLabel = GUIControler.addSmallLabel(this, passwordLabel, "비밀번호", 40, 150);
 		
 		idField = GUIControler.addTextField(this, idField, 40, 130, 310, 30);
 		passwordField = GUIControler.addPasswordField(this, passwordField, 40, 190, 310, 30);
@@ -70,7 +71,8 @@ public class LoginFrame extends SimpleJFrame implements ActionListener, KeyListe
 		JOptionPane.showMessageDialog(this, "Login!");
 		
 		/*if(Login Sucess)*/ {
-			
+			@SuppressWarnings("unused")
+			MainFrame mainFrame = new MainFrame();
 		}
 	}
 	

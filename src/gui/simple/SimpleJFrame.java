@@ -44,6 +44,7 @@ public class SimpleJFrame extends JFrame implements MouseListener, MouseMotionLi
 		this.setSize(WIDTH, HEIGHT);
 		this.setLocation(x = screen.width / 2 - WIDTH/2, y = screen.height / 2 - HEIGHT/2);
 		this.setResizable(false);
+		//this.getContentPane().setBackground(new Color(250, 250, 250));
 		this.setVisible(true);
 		
 		exitButton = new JButton("x");
