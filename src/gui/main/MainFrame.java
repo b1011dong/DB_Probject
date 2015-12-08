@@ -19,8 +19,11 @@ import gui.simple.SimpleJFrame;
 public class MainFrame extends SimpleJFrame implements ActionListener, KeyListener {
 
 	private static final long serialVersionUID = -4004556136944490550L;
+
+	private SubjectListPanel subjectListPanel;
+	private AssignmentListPanel assignmentListPanel;
 	
-	private JLabel mainLabel;
+	private JLabel userNameLabel;
 	
 	public MainFrame() {
 		super("MainFrame", 1280, 720);
@@ -36,14 +39,22 @@ public class MainFrame extends SimpleJFrame implements ActionListener, KeyListen
 		String name = "박영철";
 		
 		//if(professor) {
-			mainLabel = GUIControler.addSmallLabel(this, mainLabel, "교수 " + name, 20, 0);
+		userNameLabel = GUIControler.addSmallLabel(this, userNameLabel, "교수 " + name, 20, 0);
 		//}
 		//else if(assistant) {
-		//	mainLabel = GUIControler.addSmallLabel(this, mainLabel, "조교 " + name, 20, 0);
+		//	userNameLabel = GUIControler.addSmallLabel(this, userNameLabel, "조교 " + name, 20, 0);
 		//}
 		//else if(student) {
-		//	mainLabel = GUIControler.addSmallLabel(this, mainLabel, "학생 " + name, 20, 0);
+		//	userNameLabel = GUIControler.addSmallLabel(this, userNameLabel, "학생 " + name, 20, 0);
 		//}
+	}
+	
+	public void subjectListPanel() {
+		
+	}
+	
+	public void assignmentListPanel() {
+		
 	}
 	
 	@Override
