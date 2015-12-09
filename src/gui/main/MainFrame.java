@@ -43,7 +43,7 @@ public class MainFrame extends SimpleJFrame implements ActionListener, KeyListen
 		
 		String name = "¹Ú¿µÃ¶";
 		
-		userNameLabel = GUIControler.addSmallLabel(this, userNameLabel, name, 120, 0);
+		userNameLabel = GUIControler.addSmallLabel(this, userNameLabel, name, 110, 0);
 		
 		subjectList();
 		assignmentList();
