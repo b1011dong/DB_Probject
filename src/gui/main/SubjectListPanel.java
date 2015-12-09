@@ -30,6 +30,19 @@ public class SubjectListPanel extends SimpleJPanel{
 		String subjectName = null;
 		JButton tempButton = null;
 		
+		tempButton = new JButton("µ•¿Ã≈∏ ∫£¿ÃΩ∫");
+		tempButton.setBackground(Color.WHITE);
+		tempButton.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.PLAIN, 16));
+		tempButton.setBorder(null);
+		tempButton.setOpaque(true);
+		tempButton.setFocusPainted(false);
+		tempButton.addFocusListener(this);
+		tempButton.addMouseWheelListener(this);
+		tempButton.addMouseListener(this);
+		//tempButton.setForeground(Color.WHITE);
+		//tempButton.setBackground(GUIData.buttonColorBlue);
+		getSubjectListButton().add(tempButton);
+		
 		for(int i = 0; i < 15; i++) {
 			subjectName = "Subject List #" + i;
 			
@@ -57,7 +70,7 @@ public class SubjectListPanel extends SimpleJPanel{
 		for(int i = currentIndex; i < currentIndex + 10; i++) {
 			if(i >= getSubjectListButton().size()) break;
 			
-			this.add(getSubjectListButton().get(i)).setBounds(2, 61 * j + 5, 300, 61);
+			this.add(getSubjectListButton().get(i)).setBounds(2, 61 * j + 5, 347, 61);
 			j++;
 		}
 		

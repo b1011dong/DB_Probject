@@ -8,13 +8,16 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Arrays;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import gui.data.GUIControler;
 import gui.data.GUIData;
@@ -41,6 +44,7 @@ public class SignupFrame extends SimpleJFrame implements ActionListener, KeyList
 	private JLabel phoneLabel;
 	private JLabel emailLabel_pre;
 	private JLabel emailLabel_at;
+	private JLabel warningLabel;
 	
 	private JTextField idField;
 	private JPasswordField passwordField;
@@ -83,6 +87,9 @@ public class SignupFrame extends SimpleJFrame implements ActionListener, KeyList
 		phoneLabel = GUIControler.addSmallLabel(this, phoneLabel, "전화번호", 40, 510);
 		emailLabel_pre = GUIControler.addSmallLabel(this, emailLabel_pre, "이메일", 40, 570);
 		emailLabel_at = GUIControler.addSmallLabel(this, emailLabel_at, "@", 190, 600);
+		warningLabel = GUIControler.addSmallLabel(this, warningLabel, "", 100, 60);
+		warningLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		warningLabel.setForeground(Color.RED);
 		
 		idField = GUIControler.addTextField(this, idField, 40, 130, 310, 30);
 		passwordField = GUIControler.addPasswordField(this, passwordField, 40, 190, 310, 30);
@@ -115,16 +122,93 @@ public class SignupFrame extends SimpleJFrame implements ActionListener, KeyList
 		// TODO signup need to be implemented
 		//JOptionPane.showMessageDialog(this, "Signup!");
 		
+		if(validCheck() == true) {
+		
+		@SuppressWarnings("unused")
+		LoginFrame loginFrame = new LoginFrame();
+		
 		this.dispose();
+		}
+	}
+	
+	public boolean validCheck() {
+		JComponent nullComponent = nullCheck();
+		
+		if(nullComponent != null) {
+			nullComponent.grabFocus();
+			
+			return false;
+		}
+		
+		if(passwordCheck() == false) return false;
+		
+		return true;
+	}
+	
+	public boolean passwordCheck() {
+		
+		if(Arrays.equals(passwordField.getPassword(), passwordCheckField.getPassword()))
+			return true;
+		
+		warningLabel.setText("확인 비밀번호가 다릅니다.");
+		
+		passwordCheckField.setText("");
+		passwordCheckField.grabFocus();
+		
+		return false;
+	}
+	
+	public JComponent nullCheck() {
+		JComponent nullComponent = null;
+		String nullName = null;
+		
+		if(idField.getText().isEmpty()) {
+			nullName = "아이디";
+			nullComponent = idField;
+		}
+		else if(passwordField.getPassword().length == 0) {
+			nullName = "비밀번호";
+			nullComponent = passwordField;
+		}
+		else if(authorityButtonGroup.getSelection() == null) {
+			nullName = "권한";
+			nullComponent = professorRadioButton;
+		}
+		else if(majorField.getText().isEmpty()) {
+			nullName = "전송/소속";
+			nullComponent = majorField;
+		}
+		else if(numberField.getText().isEmpty()) {
+			nullName = "번호";
+			nullComponent = numberField;
+		}
+		else if(nameField.getText().isEmpty()) {
+			nullName = "이름";
+			nullComponent = nameField;
+		}
+		else if(phoneField.getText().isEmpty() || phoneField.getText().equals("예) 01012345678")) {
+			nullName = "전화번호";
+			nullComponent = phoneField;
+		}
+		else if(emailField_pre.getText().isEmpty()) {
+			nullName = "이메일";
+			nullComponent = emailField_pre;
+		}
+		else if(emailField_post.getText().isEmpty()) {
+			nullName = "이메일";
+			nullComponent = emailField_post;
+		}
+		
+		if(nullComponent != null)
+			warningLabel.setText(nullName + " 항목이 비었습니다.");
+		
+		return nullComponent;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == okButton) {
-			@SuppressWarnings("unused")
-			LoginFrame loginFrame = new LoginFrame();
-			
 			signup();
 		}
 		else if(e.getSource() == cancelButton) {
@@ -193,9 +277,6 @@ public class SignupFrame extends SimpleJFrame implements ActionListener, KeyList
 				emailField_post.grabFocus();
 			}
 			else if(e.getSource() == emailField_post) {
-				@SuppressWarnings("unused")
-				LoginFrame loginFrame = new LoginFrame();
-				
 				signup();
 			}
 		}
