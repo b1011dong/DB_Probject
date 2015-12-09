@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import gui.data.GUIControler;
+import gui.login.LoginFrame;
 import gui.simple.SimpleJFrame;
 
 /**
@@ -22,6 +24,9 @@ public class MainFrame extends SimpleJFrame implements ActionListener, KeyListen
 
 	private SubjectListPanel subjectListPanel;
 	private AssignmentListPanel assignmentListPanel;
+	
+	private JButton backToLoginButton;
+	private JButton backButton;
 	
 	private JLabel userNameLabel;
 	
@@ -38,23 +43,25 @@ public class MainFrame extends SimpleJFrame implements ActionListener, KeyListen
 		
 		String name = "박영철";
 		
-		//if(professor) {
-		userNameLabel = GUIControler.addSmallLabel(this, userNameLabel, "교수 " + name, 20, 0);
-		//}
-		//else if(assistant) {
-		//	userNameLabel = GUIControler.addSmallLabel(this, userNameLabel, "조교 " + name, 20, 0);
-		//}
-		//else if(student) {
-		//	userNameLabel = GUIControler.addSmallLabel(this, userNameLabel, "학생 " + name, 20, 0);
-		//}
+		userNameLabel = GUIControler.addSmallLabel(this, userNameLabel, name, 120, 0);
+		
+		subjectList();
+		assignmentList();
+		
+		backToLoginButton = GUIControler.addButton(this, backToLoginButton, "로그아웃", 20, 10);
+		backButton = GUIControler.addButton(this, backButton, " 뒤 로 ", 400, 10);
 	}
 	
-	public void subjectListPanel() {
+	public void subjectList() {
+		subjectListPanel = new SubjectListPanel();
 		
+		this.add(subjectListPanel).setBounds(20, 50, 350, 620);
 	}
 	
-	public void assignmentListPanel() {
+	public void assignmentList() {
+		assignmentListPanel = new AssignmentListPanel();
 		
+		this.add(assignmentListPanel).setBounds(400, 50, 850, 620);
 	}
 	
 	@Override
@@ -65,23 +72,31 @@ public class MainFrame extends SimpleJFrame implements ActionListener, KeyListen
 		else if(e.getSource() == exitButton) {
 			this.dispose();
 		}
+		else if(e.getSource() == backToLoginButton) {
+			@SuppressWarnings("unused")
+			LoginFrame loginFrame = new LoginFrame();
+			
+			// TODO logout need to be implemented
+			
+			this.dispose();
+		}
+		else if(e.getSource() == backButton) {
+			// TODO back need to be implemented
+		}
 	}
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 

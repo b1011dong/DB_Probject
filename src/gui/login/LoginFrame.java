@@ -68,7 +68,7 @@ public class LoginFrame extends SimpleJFrame implements ActionListener, KeyListe
 		 * 
 		 * note: 1 and 2 probably the same
 		 */
-		JOptionPane.showMessageDialog(this, "Login!");
+		//JOptionPane.showMessageDialog(this, "Login!");
 		
 		/*if(Login Sucess)*/ {
 			@SuppressWarnings("unused")

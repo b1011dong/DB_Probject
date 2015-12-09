@@ -12,7 +12,6 @@ import java.awt.event.KeyListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -113,7 +112,10 @@ public class SignupFrame extends SimpleJFrame implements ActionListener, KeyList
 	}
 	
 	public void signup() {
-		JOptionPane.showMessageDialog(this, "Signup!");
+		// TODO signup need to be implemented
+		//JOptionPane.showMessageDialog(this, "Signup!");
+		
+		this.dispose();
 	}
 	
 	@Override
@@ -124,8 +126,6 @@ public class SignupFrame extends SimpleJFrame implements ActionListener, KeyList
 			LoginFrame loginFrame = new LoginFrame();
 			
 			signup();
-			
-			this.dispose();
 		}
 		else if(e.getSource() == cancelButton) {
 			@SuppressWarnings("unused")
@@ -197,8 +197,6 @@ public class SignupFrame extends SimpleJFrame implements ActionListener, KeyList
 				LoginFrame loginFrame = new LoginFrame();
 				
 				signup();
-				
-				this.dispose();
 			}
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_UP) {
