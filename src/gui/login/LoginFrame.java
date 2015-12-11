@@ -72,7 +72,7 @@ public class LoginFrame extends SimpleJFrame implements ActionListener, KeyListe
 		
 		/*if(Login Sucess)*/ {
 			@SuppressWarnings("unused")
-			MainFrame mainFrame = new MainFrame();
+			MainFrame mainFrame = new MainFrame("¹Ú¿µÃ¶");
 		}
 	}
 	

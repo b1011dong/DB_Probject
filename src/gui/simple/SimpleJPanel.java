@@ -22,7 +22,7 @@ public class SimpleJPanel extends JPanel implements ActionListener, FocusListene
 	public SimpleJPanel() {
 		this.setLayout(null);
 
-		this.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED, new Color(50, 50, 50), new Color(255, 255, 255))); // frame에 테두리 적용
+		this.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED, new Color(50, 50, 50), new Color(255, 255, 255)));
 		this.setBackground(Color.WHITE);
 		this.setVisible(true);
 	}
@@ -30,7 +30,7 @@ public class SimpleJPanel extends JPanel implements ActionListener, FocusListene
 	public SimpleJPanel(int width, int height) {
 		this.setLayout(null);
 
-		this.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED, new Color(50, 50, 50), new Color(255, 255, 255))); // frame에 테두리 적용
+		this.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED, new Color(50, 50, 50), new Color(255, 255, 255)));
 		this.setBackground(Color.BLUE);
 		this.setSize(width, height);
 		this.setVisible(true);

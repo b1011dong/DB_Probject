@@ -1,5 +1,6 @@
 package gui.main;
 
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import gui.data.GUIControler;
+import gui.data.GUIData;
 import gui.login.LoginFrame;
 import gui.simple.SimpleJFrame;
 
@@ -30,20 +32,18 @@ public class MainFrame extends SimpleJFrame implements ActionListener, KeyListen
 	
 	private JLabel userNameLabel;
 	
-	public MainFrame() {
+	public MainFrame(String userName) {
 		super("MainFrame", 1280, 720);
 		
-		addComponents();
+		addComponents(userName);
 		
 		this.minimizeButton.addActionListener(this);
 		this.exitButton.addActionListener(this);
 	}
 
-	public void addComponents() {
-		
-		String name = "¹Ú¿µÃ¶";
-		
-		userNameLabel = GUIControler.addSmallLabel(this, userNameLabel, name, 110, 0);
+	public void addComponents(String userName) {
+
+		userNameLabel = GUIControler.addSmallLabel(this, userNameLabel, userName, 110, 0);
 		
 		subjectList();
 		assignmentList();
@@ -53,7 +53,7 @@ public class MainFrame extends SimpleJFrame implements ActionListener, KeyListen
 	}
 	
 	public void subjectList() {
-		subjectListPanel = new SubjectListPanel();
+		subjectListPanel = new SubjectListPanel(this);
 		
 		this.add(subjectListPanel).setBounds(20, 50, 350, 620);
 	}
@@ -82,6 +82,16 @@ public class MainFrame extends SimpleJFrame implements ActionListener, KeyListen
 		}
 		else if(e.getSource() == backButton) {
 			// TODO back need to be implemented
+		}
+		
+		for(int i = 0; i < subjectListPanel.getSubjectListButton().size(); i++) {
+			subjectListPanel.getSubjectListButton().get(i).setBackground(Color.WHITE);
+			if(e.getSource() == subjectListPanel.getSubjectListButton().get(i)) {
+				subjectListPanel.getSubjectListButton().get(i).setBackground(GUIData.buttonColorOrange);
+				
+				assignmentListPanel.removeAll();
+				assignmentListPanel.getSubjectDataFromServer(subjectListPanel.getSubjectListButton().get(i).getText());
+			}
 		}
 	}
 	

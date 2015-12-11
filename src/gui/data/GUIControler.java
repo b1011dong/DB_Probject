@@ -8,7 +8,6 @@ import java.awt.event.KeyListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -37,7 +36,7 @@ public class GUIControler {
 		return label;
 	}
 	
-	static public JLabel addMediumLabel(JComponent frame, JLabel label, String message, int x, int y) {
+	static public JLabel addMediumLabel(JFrame frame, JLabel label, String message, int x, int y) {
 		label = new JLabel();
 		label.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 18));
 		label.setForeground(new Color(60, 60, 60));
