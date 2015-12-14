@@ -91,7 +91,6 @@ public class SubjectListPanel extends SimpleJPanel{
 		this.add(remainedAboveLabel).setBounds(0, 0, 350, 30);
 		
 		int below = getSubjectListButton().size() - currentIndex - MAX_LIST_NUM;
-		
 		if(below <= 0) below = 0;
 		
 		remainedBelowLabel = new JLabel();

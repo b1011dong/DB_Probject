@@ -119,10 +119,8 @@ public class SignupFrame extends SimpleJFrame implements ActionListener, KeyList
 	}
 	
 	public void signup() {
-		// TODO signup need to be implemented
-		//JOptionPane.showMessageDialog(this, "Signup!");
-		
 		if(validCheck() == true) {
+		// TODO signup need to be implemented
 		
 		@SuppressWarnings("unused")
 		LoginFrame loginFrame = new LoginFrame();

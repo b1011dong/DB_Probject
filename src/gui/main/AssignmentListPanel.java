@@ -29,6 +29,8 @@ public class AssignmentListPanel extends SimpleJPanel{
 		nameLabel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED, new Color(50, 50, 50), new Color(255, 255, 255)));
 		nameLabel.setVisible(true);
 		this.add(nameLabel).setBounds(10, 10, 830, 50);
+		
+		
 	}
 	
 	public void getSubjectDataFromServer(String subject) {

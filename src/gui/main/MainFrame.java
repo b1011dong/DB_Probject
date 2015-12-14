@@ -75,7 +75,6 @@ public class MainFrame extends SimpleJFrame implements ActionListener, KeyListen
 		else if(e.getSource() == backToLoginButton) {
 			@SuppressWarnings("unused")
 			LoginFrame loginFrame = new LoginFrame();
-			
 			// TODO logout need to be implemented
 			
 			this.dispose();
