@@ -25,7 +25,7 @@ public class MainFrame extends SimpleJFrame implements ActionListener, KeyListen
 	private static final long serialVersionUID = -4004556136944490550L;
 
 	private SubjectListPanel subjectListPanel;
-	private AssignmentListPanel assignmentListPanel;
+	private RightPanel rightPanel;
 	
 	private JButton backToLoginButton;
 	private JButton backButton;
@@ -59,9 +59,9 @@ public class MainFrame extends SimpleJFrame implements ActionListener, KeyListen
 	}
 	
 	public void assignmentList() {
-		assignmentListPanel = new AssignmentListPanel();
+		rightPanel = new RightPanel();
 		
-		this.add(assignmentListPanel).setBounds(400, 50, 850, 620);
+		this.add(rightPanel).setBounds(400, 50, 850, 620);
 	}
 	
 	@Override
@@ -82,14 +82,17 @@ public class MainFrame extends SimpleJFrame implements ActionListener, KeyListen
 		else if(e.getSource() == backButton) {
 			// TODO back need to be implemented
 		}
-		
-		for(int i = 0; i < subjectListPanel.getSubjectListButton().size(); i++) {
-			subjectListPanel.getSubjectListButton().get(i).setBackground(Color.WHITE);
-			if(e.getSource() == subjectListPanel.getSubjectListButton().get(i)) {
-				subjectListPanel.getSubjectListButton().get(i).setBackground(GUIData.buttonColorOrange);
-				
-				assignmentListPanel.removeAll();
-				assignmentListPanel.getSubjectDataFromServer(subjectListPanel.getSubjectListButton().get(i).getText());
+		else {
+			for(int i = 0; i < subjectListPanel.getSubjectListButton().size(); i++) {
+				subjectListPanel.getSubjectListButton().get(i).setBackground(Color.WHITE);
+				if(e.getSource() == subjectListPanel.getSubjectListButton().get(i)) {
+					subjectListPanel.getSubjectListButton().get(i).setBackground(GUIData.buttonColorOrange);
+					
+					// TODO construct selected right panel
+					rightPanel.removeAll();
+					rightPanel.addComponents("   " + subjectListPanel.getSubjectListButton().get(i).getText(), "¹Ú¿µÃ¶");
+					rightPanel.addAssignmentListPanel();
+				}
 			}
 		}
 	}

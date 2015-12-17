@@ -5,24 +5,21 @@ import java.awt.Font;
 
 import javax.swing.JButton;
 
-public class AssignmentListPanel extends RightContentPanel{
+public class QnAListPanel extends RightContentPanel{
 
 	private static final long serialVersionUID = 2382632880666551084L;
 	
-	public AssignmentListPanel() {
+	public QnAListPanel() {
 		super();
-		
-		// TODO if student, remove writeButton
-		// getWriteButton().setVisible(false);
 	}
-	
+
 	@Override
 	public void makeList() {
 		String assignmentName = null;
 		JButton tempButton = null;
 		
 		for(int i = 0; i < 15; i++) {
-			assignmentName = "Assignment List #" + i;
+			assignmentName = "Question List #" + i;
 			
 			tempButton = new JButton(assignmentName);
 			tempButton.setBackground(Color.WHITE);
@@ -43,10 +40,7 @@ public class AssignmentListPanel extends RightContentPanel{
 
 	@Override
 	public void openEditPanel() {
-		this.removeAll();
-		setAssignmentPanel(new AssignmentPanel());
-		this.add(getAssignmentPanel()).setBounds(0, 0, this.getWidth(), this.getHeight());
-		this.repaint();
+		// TODO Auto-generated method stub
 	}
 
 	@Override
