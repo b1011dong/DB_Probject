@@ -44,13 +44,26 @@ public class AssignmentListPanel extends RightContentPanel{
 	@Override
 	public void openEditPanel() {
 		this.removeAll();
-		setAssignmentPanel(new AssignmentPanel());
+		
+		setAssignmentPanel(new AssignmentPanel("", "", ""));
 		this.add(getAssignmentPanel()).setBounds(0, 0, this.getWidth(), this.getHeight());
+		
+		getAssignmentPanel().getOkButton().addActionListener(this);
+		getAssignmentPanel().getCancelButton().addActionListener(this);
+		
 		this.repaint();
 	}
 
 	@Override
 	public void openEditPanel(int index) {
-		// TODO Auto-generated method stub
+		this.removeAll();
+		
+		setAssignmentPanel(new AssignmentPanel(this.getListButton().get(getCurrentIndex()).getText(), "", ""));
+		this.add(getAssignmentPanel()).setBounds(0, 0, this.getWidth(), this.getHeight());
+		
+		getAssignmentPanel().getOkButton().addActionListener(this);
+		getAssignmentPanel().getCancelButton().addActionListener(this);
+		
+		this.repaint();
 	}
 }

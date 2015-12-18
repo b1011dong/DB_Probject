@@ -109,6 +109,28 @@ abstract public class RightContentPanel extends SimpleJPanel{
 				}
 			}
 		}
+		
+		if(getAssignmentPanel() != null) {
+			if(e.getSource() == getAssignmentPanel().getOkButton()) {
+				this.removeAll();
+				addComponents();
+			}
+			else if(e.getSource() == getAssignmentPanel().getCancelButton()) {
+				this.removeAll();
+				addComponents();
+			}
+		}
+		
+		if(getQuestionPanel() != null) {
+			if(e.getSource() == getQuestionPanel().getOkButton()) {
+				this.removeAll();
+				addComponents();
+			}
+			else if(e.getSource() == getQuestionPanel().getCancelButton()) {
+				this.removeAll();
+				addComponents();
+			}
+		}
 	}
 	
 	@Override

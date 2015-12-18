@@ -40,11 +40,27 @@ public class QnAListPanel extends RightContentPanel{
 
 	@Override
 	public void openEditPanel() {
-		// TODO Auto-generated method stub
+		this.removeAll();
+		
+		setQuestionPanel(new QuestionPanel("", "", ""));
+		this.add(getQuestionPanel()).setBounds(0, 0, this.getWidth(), this.getHeight());
+		
+		getQuestionPanel().getOkButton().addActionListener(this);
+		getQuestionPanel().getCancelButton().addActionListener(this);
+		
+		this.repaint();
 	}
 
 	@Override
 	public void openEditPanel(int index) {
-		// TODO Auto-generated method stub
+this.removeAll();
+		
+		setQuestionPanel(new QuestionPanel(this.getListButton().get(getCurrentIndex()).getText(), "", ""));
+		this.add(getQuestionPanel()).setBounds(0, 0, this.getWidth(), this.getHeight());
+		
+		getQuestionPanel().getOkButton().addActionListener(this);
+		getQuestionPanel().getCancelButton().addActionListener(this);
+		
+		this.repaint();
 	}
 }
